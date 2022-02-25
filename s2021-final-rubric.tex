@@ -1,0 +1,255 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs}
+\definecolor{lucid-blue}{RGB}{0,125,179}
+\definecolor{my-magenta}{RGB}{184,26,91}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=lucid-blue,
+    filecolor=my-magenta,      
+    urlcolor=my-magenta,
+}
+
+\newcommand{\redit}[1]{%
+  {\color{my-magenta}#1}%
+}
+
+\newcommand{\redemph}[1]{%
+  {\color{my-magenta}\emph{#1}}%
+}
+
+\newcommand\mydot{{\color{lucid-blue}\bullet}\mathllap{\circ}}
+
+\title{CMSC 320: Introduction to Data Science\\
+      \textbf{Final Project: A Tutorial}}
+\author{Jos\'{e} Manuel Calder\'{o}n Trilla}
+\date{\fbox{\fbox{\textbf{\redit{Due by 16:00 (EDT) on May 17, 2021}}}}}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Motivation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Motivation}
+
+There will be no final exam for CMSC320, instead students are asked to submit a
+\emph{tutorial} that walks the reader through the Data Science pipeline. The
+subject matter of this tutorial is far less important that the ability to
+communicate the approach throughout and a meaningful discussion of the
+implications/interpretations of the final results.
+
+For the purposes of this tutorial, we will assume that `The Data Science
+Pipeline' has the following phases:
+
+\begin{enumerate}
+  \item Data collection/curation + parsing (if necessary)
+  \item Data management/representation
+  \item Exploratory data analysis
+  \item Hypothesis testing and machine learning
+  \item Communication of insights attained
+\end{enumerate}
+
+It is required that each tutorial is a \emph{self-contained} artifact, using a
+combination of Mardown and Python code within a Jupyter Notebook. This artifact
+should be \emph{publically available} on the web.
+\href{https://pages.github.com/}{Github Pages} is a reasonable choice for this,
+but it is not required (\href{}{Google Collab} is another off-the-shelf
+solution). We will discuss this later in this document.
+
+The dataset chosen should be publicly available (so that we can replicate your
+results). Some possible sources of data:
+
+\begin{enumerate}
+  \item A curated list of datasets: \url{https://github.com/awesomedata/awesome-public-datasets}
+  \item The U.S. Government is a fantastic source of open data: \url{https://www.data.gov/}
+  \item Often individual States will also host their own open data, here is the link for Maryland: \url{https://opendata.maryland.gov/}
+  \item Microsoft has a list of open datasets: \url{https://azure.microsoft.com/en-us/services/open-datasets/catalog/}
+  \item The National Institute of Health provides many datasets, here are the COVID related datasets: \url{https://datascience.nih.gov/covid-19-open-access-resources}
+\end{enumerate}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Expectations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Expectations}
+
+In general we would expect a good submission to provide the following at a
+minimum:
+
+\begin{itemize}
+  \item 1500+ words of prose in English, describing the process throughout
+        and a discussion of the insights attained
+  \item Approximately 150 lines of non-contrived Python
+  \item Well-labelled figures showing important aspects of the analysis
+  \item Links to external documentation and resources that would be useful
+        in understanding the approach.
+\end{itemize}
+
+\subsection{Groups}
+
+Groups are allowed for the final project, up to 3 people per group. As the
+group size increases, so would the scale of the expectations: more people
+should result in a more thorough tutorial. Groups must be pre-registered by
+April 16\textsuperscript{th}.
+
+\redit{EDIT:} There have been many questions about what constitutes `scaling'
+the expectations. The graders recognize that there are some aspects of the data
+science pipeline where there may only be one `right' way to do something.  For
+example, if you're accessing data from a pre-populated SQL database, we do not
+expect a group to discuss multiple ways of accessing the data! However, there
+are many aspects in data-visualization, data-exploration, or data-analysis
+(just as examples) where there \emph{are} multiple methods of accomplishing
+the same task. We would expect a group to discuss more of those alternatives.
+Sometimes this results in more code, but often it results in only small amount
+of extra code, but a significant amount of extra discussion.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Examples
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Examples}
+
+The following are links to final projects from past semesters. They should be
+seen as a rough guide to what is expected and to the variety of topics that can
+be pursued and not as examples of the highest-scoring submissions.
+
+\begin{itemize}
+  \item \url{https://amulyavelamakanni.github.io/data-science-pipeline-tutorial/}: 
+        Analysis of Freddie Mac's Single Family Loan-Level data
+  \item \url{https://andrewstehman.github.io/Joe-Flacco-Is-Elite/}: 
+        Investigation into whether Joe Flacco is an `elite' quarterback in the
+        NFL
+  \item \url{https://summerzzzy.github.io/}: 
+        Analysis of global suicide rates
+  \item \url{https://amygracecruz.github.io/}: 
+        Attempt to predict dementia and Alzheimer's
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Submission
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Deliverable}
+
+We recommend `GitHub Pages' (\url{https://pages.github.com/}) for hosting your
+final tutorial\footnote{It's where we host the course webpage.} Github provides
+this service, free of charge, for any public repository hosted on their
+platform. One of the main benefits is that GitHub does not try to be `smart'
+about hosting a Jupyter Notebook, it only hosts a static HTML page. So
+generating that HTML can be done independently. This also has the side benefit
+that there is no risk of data sources shifting or changing, causing your
+project to fail, all data manipulation, analyses, and figures are computed
+ahead of time and hosted statically.
+
+The following 3 items are required:
+
+\begin{enumerate}
+  \item A GitHub account
+  \item A repository named \verb`<account-name>.github.io`, where
+        \verb`<account-name>` is your unique GitHub account handle
+  \item An HTML export of your final tutorial.
+\end{enumerate}
+
+You can use the same repository for storing and versioning your final project,
+in fact I recommend it!), but that is not a require of GitHub pages itself.
+
+There are many tutorials online for using GitHub pages. Personally, I have found
+the official page to be sufficient: \url{https://pages.github.com/}.
+
+\subsection{Format of your deliverable}
+
+The formatting for the majority of the deliverable is left to your discretion.
+However, each submission must begin with the title of the tutorial, providing a
+rough idea of the topic, followed by your name (and all members of the group).
+
+\subsection{Submission of your tutorial}
+
+The submission to staff is simply the URL for your hosted tutorial. The
+submission must occur by the University's specified Final Exam time:
+\textbf{\textit{4:00PM EDT on May 17\textsuperscript{th} 2021}}. Due to the
+short time-table for final grades, no late submissions will be accepted.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Assessment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Assessment}
+
+The following dimensions of each submission will be given a rating between 1-10:
+
+\begin{enumerate}
+  \item Motivation
+  \item Understanding
+  \item Resources
+  \item Prose
+  \item Code
+  \item Communication of Approach
+  \item Subjective Evaluation
+\end{enumerate}
+
+\paragraph{Motivation:} each tutorial should be sufficiently motivated. If
+  there is not motivation for the analysis, why would we 'do data science'
+  on this topic?
+
+\paragraph{Understanding:} the reader of the tutorial should walk away with
+  \emph{some new understanding} of the topic at hand. If it's not possible
+  for a reader to state `what they learned' from reading your tutorial, then
+  why do the analysis?
+
+\paragraph{Resources:} tutorials should help the reader learn a skill, but
+  they should also provide a launching pad for the reader to further develop
+  that skill. The tutorial should link to additional resources wherever
+  appropriate, so that a well-motivated reader can read further on techniques
+  that have been used in the tutorial.
+
+\paragraph{Prose:} it's very easy to write the literal English for what the
+  Python code is doing, but that's not very useful. The prose should
+  \emph{enhance}, the tutorial, adding additional context and insight.
+
+\paragraph{Code:} code should be clear and commented. Function definitions
+  should be described and given context/motivation. If the prose helps
+  the reader understand \emph{why} the code should  be sufficient for the
+  reader to learn \emph{how}.
+
+\paragraph{Communication of Approach:} every technical choice has alternatives,
+  why did you choose the approach taken in the tutorial? A reader should walk
+  away with some idea of what the trade-offs may be.
+
+\paragraph{Subjective Evaluation:} does the tutorial seem polished and
+  `publishable', or haphazard and quickly thrown together? The tutorials
+  should read as well put together and having undergone a few iterations of
+  editing and refinement. This should be the easiest of the dimensions.
+
+\subsection{Grades}
+
+Once each tutorials has been rated along each dimension, the score for
+each dimension will be scaled according to the following rubric:
+
+\vspace{\fill}
+
+\begin{center}
+\begin{tabular}{c|c}\toprule
+Category                  & Points Available \\ \midrule
+Motivation                & 10 \\
+Understanding             & 10 \\
+Resources                 & 10 \\
+Prose                     & 20 \\
+Code                      & 20 \\
+Communication of Approach & 20 \\
+Subjective Evaluation     & 10 \\ \midrule
+Total Points:             & 100
+\end{tabular}
+\end{center}
+\end{document}
+
